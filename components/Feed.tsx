@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import PromptCard from './PromptCard';
 import Loading from '@components/Loading';
 
@@ -50,7 +50,7 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch('api/prompt');
+      const response = await fetch('api/prompt', { next: { revalidate: 10 } });
       const data = await response.json();
 
       setPosts(data);
