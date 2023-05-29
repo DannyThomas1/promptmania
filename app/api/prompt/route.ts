@@ -8,6 +8,8 @@ export const GET = async () => {
 
     const prompts = await Prompt.find({}).populate('creator');
 
+    console.log('prompts', prompts);
+
     return new Response(JSON.stringify(prompts), { status: 200 });
   } catch (error) {
     console.log(error);
